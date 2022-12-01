@@ -1,1 +1,8 @@
-<p>sidebar works!</p>
+<h2>Busqueda</h2>
+<hr>
+<ul class="list-group">
+  <!-- [routerLinkActiveOptions]="{ exact: true }"    si y solo si hace match con la url exacta -->
+  <li routerLink="" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" class="list-group-item">Buscarpaís</li>
+  <li routerLink="region" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" class="list-group-item">Por region</li>
+  <li routerLink="capital" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" class="list-group-item">Por capital</li>
+</ul>
