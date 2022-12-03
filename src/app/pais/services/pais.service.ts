@@ -15,4 +15,17 @@ export class PaisService {
     const url = `${this.apiUrl}/name/${termino}`;
     return this.http.get<Country[]>(url);
   }
+
+  buscarCapital(termino: string): Observable<Country[]> {
+    const url = `${this.apiUrl}/capital/${termino}`;
+    return this.http.get<Country[]>(url);
+  }
+
+  getPaisPorId(id: string) {
+    const url = `${this.apiUrl}/alpha/${id}`;
+    return this.http.get<Country>(url);
+    // this.buscarPais(id).subscribe((paises) => {
+    //   return paises.filter((pais) => pais.cca3 === id);
+    // });
+  }
 }
