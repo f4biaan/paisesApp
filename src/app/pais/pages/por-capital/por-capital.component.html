@@ -15,7 +15,7 @@
   No se encontro nada con el término {{ termino }} ...
 </div>
 
-<div *ngIf="!hayError" class="row">
+<div *ngIf="paises.length > 0" class="row">
   <div class="col">
     <app-pais-tabla [paises]="paises"></app-pais-tabla>
   </div>
