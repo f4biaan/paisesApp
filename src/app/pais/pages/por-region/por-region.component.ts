@@ -1,5 +1,9 @@
 import { Component } from '@angular/core';
 
+import { PaisService } from '../../services/pais.service';
+
+import { Country } from '../../interfaces/pais.interface';
+
 @Component({
   selector: 'app-por-region',
   templateUrl: './por-region.component.html',
@@ -14,8 +18,9 @@ import { Component } from '@angular/core';
 export class PorRegionComponent {
   regiones: string[] = ['africa', 'americas', 'asia', 'europe', 'oceania'];
   regionActiva: string = '';
+  paises: Country[] = [];
 
-  constructor() {}
+  constructor(private paisService: PaisService) {}
 
   // opción 3 - mejorada - con estilos de css condicionales
   getClassCSS(region: string) {
@@ -25,8 +30,13 @@ export class PorRegionComponent {
   }
 
   activarRegion(region: string) {
+    if (region === this.regionActiva) { return; }
     this.regionActiva = region;
-
-    // to do: hacer el llamado al servicio
+    this.paises = [];
+    this.paisService.buscarRegion(region).subscribe((paises) => {
+      // console.log(paises);
+      this.paises = paises;
+      // console.log(this.paises);
+    });
   }
 }
