@@ -7,22 +7,23 @@ import { Country } from '../interfaces/pais.interface';
   providedIn: 'root',
 })
 export class PaisService {
-  private apiUrl: string = 'https://restcountries.com/v3.1';
+  private apiUrlv3_1: string = 'https://restcountries.com/v3.1';
+  private apiUrlv2: string = 'https://restcountries.com/v2';
 
   constructor(private http: HttpClient) {}
 
   buscarPais(termino: string): Observable<Country[]> {
-    const url = `${this.apiUrl}/name/${termino}`;
+    const url = `${this.apiUrlv3_1}/name/${termino}`;
     return this.http.get<Country[]>(url);
   }
 
   buscarCapital(termino: string): Observable<Country[]> {
-    const url = `${this.apiUrl}/capital/${termino}`;
+    const url = `${this.apiUrlv3_1}/capital/${termino}`;
     return this.http.get<Country[]>(url);
   }
 
   getPaisPorId(id: string) {
-    const url = `${this.apiUrl}/alpha/${id}`;
+    const url = `${this.apiUrlv3_1}/alpha/${id}`;
     return this.http.get<Country>(url);
     // this.buscarPais(id).subscribe((paises) => {
     //   return paises.filter((pais) => pais.cca3 === id);
